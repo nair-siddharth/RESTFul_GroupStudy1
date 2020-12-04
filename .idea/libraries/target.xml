@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="target">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/quora-api/target" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/quora-api/target/generated-sources" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/quora-api/target" recursive="false" />
+  </library>
+</component>
