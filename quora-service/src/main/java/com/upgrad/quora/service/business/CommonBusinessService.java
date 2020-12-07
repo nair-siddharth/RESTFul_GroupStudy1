@@ -1,6 +1,6 @@
 package com.upgrad.quora.service.business;
 
-import com.upgrad.quora.service.dao.UserDAO;
+import com.upgrad.quora.service.dao.UserDao;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.AuthorizationFailedException;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommonBusinessService {
     @Autowired
-    private UserDAO userDAO;
+    private UserDao userDAO;
 
     public UserEntity getUserDetails(String authtoken, String uuid) throws AuthorizationFailedException, UserNotFoundException {
         UserAuthTokenEntity authTokenEntity = userDAO.getUserAuthToken(authtoken);

@@ -1,6 +1,6 @@
 package com.upgrad.quora.service.business;
 
-import com.upgrad.quora.service.dao.UserDAO;
+import com.upgrad.quora.service.dao.UserDao;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.AuthenticationFailedException;
@@ -16,7 +16,7 @@ import java.util.UUID;
 @Service
 public class UserAuthenticationService {
     @Autowired
-    private UserDAO userDAO;
+    private UserDao userDAO;
 
     @Autowired
     private PasswordCryptographyProvider cryptographyProvider;
