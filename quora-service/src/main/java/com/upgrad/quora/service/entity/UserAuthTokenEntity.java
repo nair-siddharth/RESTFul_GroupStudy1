@@ -15,7 +15,7 @@ import java.time.ZonedDateTime;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "userAuthTokenByToken", query = "select uat from UserAuthTokenEntity uat where uat.accessToken = :accessToken"),
+                @NamedQuery(name = "userAuthByAccessToken", query = "select uat from UserAuthTokenEntity uat where uat.accessToken = :accessToken"),
         }
 )
 
