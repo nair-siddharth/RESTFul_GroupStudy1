@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
+
+import com.upgrad.quora.service.exception.*;
+
 @ControllerAdvice
 public class RESTExceptionHandler {
 
@@ -40,5 +43,21 @@ public class RESTExceptionHandler {
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()),HttpStatus.UNAUTHORIZED
         );
+    }
+
+    @ExceptionHandler(InvalidQuestionException.class)
+    public ResponseEntity<ErrorResponse> invalidQuestionException(
+            InvalidQuestionException exception, WebRequest request) {
+        return new ResponseEntity<ErrorResponse>(
+                new ErrorResponse().code(exception.getCode()).message(exception.getErrorMessage()),
+                HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AnswerNotFoundException.class)
+    public ResponseEntity<ErrorResponse> answerNotFoundException(
+            AnswerNotFoundException exception, WebRequest request) {
+        return new ResponseEntity<ErrorResponse>(
+                new ErrorResponse().code(exception.getCode()).message(exception.getErrorMessage()),
+                HttpStatus.NOT_FOUND);
     }
 }
