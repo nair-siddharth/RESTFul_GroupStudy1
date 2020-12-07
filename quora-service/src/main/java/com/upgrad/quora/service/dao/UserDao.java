@@ -1,5 +1,6 @@
 package com.upgrad.quora.service.dao;
 
+import com.upgrad.quora.service.entity.AnswerEntity;
 import com.upgrad.quora.service.entity.UserAuthTokenEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import com.upgrad.quora.service.exception.SignUpRestrictedException;
@@ -24,7 +25,7 @@ public class UserDao {
     public UserEntity getUserById(final String userId) {
         try {
             return entityManager
-                    .createNamedQuery("userByUserId", UserEntity.class)
+                    .createNamedQuery("userByUuid", UserEntity.class)
                     .setParameter("userId", userId)
                     .getSingleResult();
         } catch (NoResultException nre) {
@@ -104,6 +105,20 @@ public class UserDao {
         }catch (NoResultException e){
             return null;
         }
+    }
+
+    /**
+     * Delete a user by given userid from the DB.
+     *
+     * @param userId Id of the answer whose information is to be fetched.
+     * @return UserEntity.
+     */
+    public UserEntity deleteUser(final String userId) {
+        UserEntity deleteUser = getUserById(userId);
+        if (deleteUser != null) {
+            entityManager.remove(deleteUser);
+        }
+        return deleteUser;
     }
 
 }
